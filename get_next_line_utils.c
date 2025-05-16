@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:50:49 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/15 17:07:29 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:01:14 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char	*strjoin_line(char *s1, char *s2)
     i = 0;
     while(s2[i])
     {
-        s3[j++] = s2[i++];
-        if(s2[i - 1] == '\n') // se o ultimo for \n
+        s3[j++] = s2[i];
+        if(s2[i++] == '\n') // se o ultimo for \n
             break; // acaba
     }
     s3[j] = '\0';
@@ -58,7 +58,7 @@ size_t	findnextline(char *buffer)
 {
     size_t i;
     size_t j;
-    size_t result;
+    int result;
 
     i = 0;
     j = 0;
@@ -66,14 +66,12 @@ size_t	findnextline(char *buffer)
 
     while(buffer[i])
     {
-        if(buffer[i] == '\n') // encontrar a linha
-            result = 1; // flag
         if(result) // se for 1
-        {
-            buffer[j++] = buffer[i++]; // 
-        }
-        buffer[i] = 0;
+            buffer[j++] = buffer[i];        
+        if(buffer[i] == '\n' && !result) // se for 1
+            result = 1;
         i++;
     }
+    buffer[j] = '\0';
     return (result);
 }
