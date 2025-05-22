@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:50:49 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/16 18:01:14 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:44:21 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ size_t ft_linelen(char *str) // ft exclusiva para leitura de txt.
 
 char	*strjoin_line(char *s1, char *s2)
 {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
     char *s3;
 
 
     i = 0;
     j = 0;
-    if(!(s3 = malloc((ft_linelen(s1) + ft_linelen(s2) + 1) * sizeof(char))))
-        return (NULL);
-    
+
+    s3 = malloc(ft_linelen(s1) + ft_linelen(s2) + 1);
+    if (!s3)
+        return NULL;
     while(s1 && s1[i]) // s1 pode serm null
         s3[j++] = s1[i++];
     i = 0;
@@ -56,22 +57,18 @@ char	*strjoin_line(char *s1, char *s2)
 
 size_t	findnextline(char *buffer)
 {
-    size_t i;
-    size_t j;
-    int result;
+	size_t	i = 0;
+	size_t	j = 0;
+	int		found = 0;
 
-    i = 0;
-    j = 0;
-    result = 0;
-
-    while(buffer[i])
-    {
-        if(result) // se for 1
-            buffer[j++] = buffer[i];        
-        if(buffer[i] == '\n' && !result) // se for 1
-            result = 1;
+	while (buffer[i])
+	{
+		if (found)
+			buffer[j++] = buffer[i];
+        if (buffer[i] == '\n' && !found)
+			found = 1;   
         i++;
-    }
+	}
     buffer[j] = '\0';
-    return (result);
+	return (found);
 }

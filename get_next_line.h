@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:50:39 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/15 16:42:03 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:10:37 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #endif
 
 
-size_t ft_strlen(char *str);
+size_t ft_linelen(char *str);
 char	*strjoin_line(char *s1, char *s2);
 size_t	findnextline(char *buffer);
 char *get_next_line(int fd);
