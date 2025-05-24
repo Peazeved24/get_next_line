@@ -5,7 +5,7 @@ int main()
     int fd; // fd == file descriptor do open
     char *line; // linha que vai receber o get_next_line
  
-    fd = open("arquivo.txt", O_RDONLY); // 
+    fd = open("ar1.txt", O_RDONLY); // 
     if (fd < 0)
         return (1);
     

@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:29:41 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/23 18:43:17 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/24 16:50:21 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,27 @@ size_t ft_linelen(char *str) // ft exclusiva para leitura de txt.
     }     
     return(i);
 }
-
-char	*strjoin_line(char *s1, char *s2) // 
+char *strjoin_line(char *s1, char *s2)
 {
-    size_t i;
-    size_t j;
+    size_t i = 0, j = 0;
+    size_t len1 = 0;
+    size_t len2 = 0;
     char *s3;
 
-
-    i = 0;
-    j = 0;
-
-    s3 = malloc(ft_linelen(s1) + ft_linelen(s2) + 1);
+    if (s1)
+        while (s1[len1])
+            len1++;
+    while (s2[len2] && s2[len2] != '\n')
+        len2++;
+    if (s2[len2] == '\n')
+        len2++;
+    s3 = malloc(len1 + len2 + 1);
     if (!s3)
-        return NULL;
-    while(s1 && s1[i]) // s1 pode serm null
-        s3[j++] = s1[i++];
-    i = 0;
-    while(s2[i])
-    {
+        return (NULL);
+    for (i = 0; i < len1; i++)
+        s3[j++] = s1[i];
+    for (i = 0; i < len2; i++)
         s3[j++] = s2[i];
-        if(s2[i++] == '\n') // se o ultimo for \n
-            break; // acaba
-    }
     s3[j] = '\0';
     free(s1);
     return (s3);
@@ -82,16 +80,15 @@ int	findnextline(char *buffer)
 
 void shift_buffer(char *buffer)
 {
-    int i;
-    int j;
+    size_t i = 0;
+    size_t j = 0;
 
-    i = 0;
-    j = 0;
-    while(buffer[i] && buffer[i] != '\n')
+    while (buffer[i] && buffer[i] != '\n')
         i++;
-    if(buffer[i] == '\n')
+    if (buffer[i] == '\n')
         i++;
-    while(buffer[i])
+    while (buffer[i])
         buffer[j++] = buffer[i++];
-    buffer[j] = '\0';
+    while (j < BUFFER_SIZE)
+        buffer[j++] = '\0';
 }
