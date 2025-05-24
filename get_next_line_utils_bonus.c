@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 15:29:41 by peazeved          #+#    #+#             */
+/*   Updated: 2025/05/23 18:43:17 by peazeved         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:50:49 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/23 16:39:57 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:44:21 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t ft_linelen(char *str) // ft exclusiva para leitura de txt.
 {
@@ -55,34 +67,31 @@ char	*strjoin_line(char *s1, char *s2) //
     return (s3);
 }
 
-size_t	findnextline(char *buffer)
+int	findnextline(char *buffer)
 {
 	size_t	i = 0;
-	size_t	j = 0;
-	int		found = 0;
 
 	while (buffer[i])
 	{
-		if (found)
-			buffer[j++] = buffer[i];
-        if (buffer[i] == '\n' && !found)
-			found = 1;   
+        if (buffer[i] == '\n')
+			return 1;   
         i++;
 	}
-    buffer[j] = '\0';
-	return (found);
+	return 0;
 }
 
-char    *ft_strcpy(char *s1, char *s2)
+void shift_buffer(char *buffer)
 {
     int i;
+    int j;
 
     i = 0;
-    while(s2[i])
-    {
-        s1[i] = s2[i];
+    j = 0;
+    while(buffer[i] && buffer[i] != '\n')
         i++;
-    }
-    s1[i] = '\0';
-    return s1;
+    if(buffer[i] == '\n')
+        i++;
+    while(buffer[i])
+        buffer[j++] = buffer[i++];
+    buffer[j] = '\0';
 }

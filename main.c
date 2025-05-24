@@ -8,11 +8,12 @@ int main()
     fd = open("arquivo.txt", O_RDONLY); // 
     if (fd < 0)
         return (1);
-    while ((line = get_next_line(fd)) != NULL)
-    {
+    
+    while ((line = get_next_line(fd))!= NULL)
+    { 
         printf("%s", line);
         free(line);
     }
     close(fd);
     return (0);
-}
+} 
