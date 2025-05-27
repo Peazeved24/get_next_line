@@ -1,41 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 16:50:49 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/24 16:55:09 by peazeved         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "get_next_line.h"
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 15:29:41 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/24 16:50:21 by peazeved         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 16:50:49 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/22 18:44:21 by peazeved         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
 size_t ft_linelen(char *str) // ft exclusiva para leitura de txt.
@@ -53,31 +15,33 @@ size_t ft_linelen(char *str) // ft exclusiva para leitura de txt.
     }     
     return(i);
 }
-char *strjoin_line(char *s1, char *s2)
-{
-    size_t i = 0, j = 0;
-    size_t len1 = 0;
-    size_t len2 = 0;
-    char *s3;
+    char *strjoin_line(char *s1, char *s2)
+    {
+        size_t i;
+        size_t j;
+        size_t len1;    
+        size_t len2;
+        char *s3;
 
-    if (s1)
-        while (s1[len1])
-            len1++;
-    while (s2[len2] && s2[len2] != '\n')
-        len2++;
-    if (s2[len2] == '\n')
-        len2++;
-    s3 = malloc(len1 + len2 + 1);
-    if (!s3)
-        return (NULL);
-    for (i = 0; i < len1; i++)
-        s3[j++] = s1[i];
-    for (i = 0; i < len2; i++)
-        s3[j++] = s2[i];
-    s3[j] = '\0';
-    free(s1);
-    return (s3);
-}
+        i = 0;
+        j = 0;
+        len1 = 0;
+        len2 = 0;
+        if (s1)
+            while (s1[len1])
+                len1++;
+        len2 = ft_linelen(s2);
+        s3 = malloc(len1 + len2 + 1);
+        if (!s3)
+            return (NULL);
+        while(i < len1)
+            s3[j++] = s1[i++];
+        i = 0;
+        while(i < len2)
+            s3[j++] = s2[i++];
+        s3[j] = '\0';
+        return (s3);
+    }
 
 int	findnextline(char *buffer)
 {

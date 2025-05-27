@@ -1,17 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 16:50:32 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/24 16:54:49 by peazeved         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
-
 
 char *get_next_line(int fd)
 {
@@ -34,7 +21,7 @@ char *get_next_line(int fd)
                     free(line);
                     return (NULL);
                 }
-                break;
+                break;  
             }
             buffer[bytes_read] = '\0';
         }

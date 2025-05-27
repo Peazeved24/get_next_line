@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:29:43 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/24 16:55:55 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:23:31 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char *get_next_line(int fd)
 {
     static char buffer[4096][BUFFER_SIZE + 1];
     char *line;
-    int bytes_read;
+    int bytes;
 
     if (fd < 0 || BUFFER_SIZE <= 0 || fd >= 4096)
         return (NULL);
@@ -25,17 +25,14 @@ char *get_next_line(int fd)
     {
         if (buffer[fd][0] == '\0')
         {
-            bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
-            if (bytes_read <= 0)
+            bytes = read(fd, buffer[fd], BUFFER_SIZE);
+            if (bytes<= 0)
             {
-                if (bytes_read < 0)
-                {
-                    free(line);
-                    return (NULL);
-                }
+                if (bytes < 0)
+                    return (free(line), NULL);
                 break;
             }
-            buffer[fd][bytes_read] = '\0';
+            buffer[fd][bytes] = '\0';
         }
         line = strjoin_line(line, buffer[fd]);
         if (!line)

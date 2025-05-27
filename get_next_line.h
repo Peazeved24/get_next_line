@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 16:50:39 by peazeved          #+#    #+#             */
-/*   Updated: 2025/05/24 16:55:30 by peazeved         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
@@ -23,9 +11,9 @@
 # define BUFFER_SIZE 9999//inicializacao por padrao sera 9999.
 #endif
 
+int	findnextline(char *buffer);
 size_t ft_linelen(char *str);
 char *strjoin_line(char *s1, char *s2);
-int	findnextline(char *buffer);
 char *get_next_line(int fd);
 void shift_buffer(char *buffer);
 #endif
