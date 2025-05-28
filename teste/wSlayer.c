@@ -1,4 +1,3 @@
-
 #include "get_next_line.h"
 
 char *get_next_line(int fd)
@@ -7,27 +6,37 @@ char *get_next_line(int fd)
     char *line;
     int bytes_read;
 
-    bytes_read = BUFFER_SIZE;
     if (fd < 0 || BUFFER_SIZE <= 0 )
         return (NULL);
     line = NULL;
     while (1)
     {
         if (buffer[0] == '\0')
+        {
             bytes_read = read(fd, buffer, BUFFER_SIZE);
-        buffer[bytes_read] = '\0';
-        if (bytes_read == 0)
-            break;
-        if (bytes_read < 0)
-            return (free(line), NULL);
+            if (bytes_read <= 0)
+            {
+                if (bytes_read < 0)
+                {
+                    free(line);
+                    return (NULL);
+                }
+                break;  
+            }
+            buffer[bytes_read] = '\0';
+        }
         line = strjoin_line(line, buffer);
         if (!line)
             return (NULL);
         if (findnextline(buffer))
-            return (shift_buffer(buffer),line);
+        {
+            shift_buffer(buffer);
+            return (line);
+        }
         buffer[0] = '\0';
     }
-    return (line);
+    if (line && line[0] != '\0')
+        return (line);
+    free(line);
+    return (NULL);
 }
-
-
