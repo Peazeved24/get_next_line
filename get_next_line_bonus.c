@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 02:13:16 by peazeved          #+#    #+#             */
-/*   Updated: 2025/06/03 17:09:08 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:59:20 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*get_next_line(int fd)
 			return (NULL);
 		while (ft_findnextline(buffer[fd]))
 			return (ft_shiftbuffer(buffer[fd]), line);
-		buffer[fd][0] = '\0';
 	}
 	return (line);
 }
