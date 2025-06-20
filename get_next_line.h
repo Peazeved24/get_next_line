@@ -6,7 +6,7 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 15:57:40 by peazeved          #+#    #+#             */
-/*   Updated: 2025/06/03 17:08:59 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:43:55 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 9999
+#  define BUFFER_SIZE 41
 # endif
 
 char	*get_next_line(int fd);

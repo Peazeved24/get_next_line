@@ -6,16 +6,16 @@
 /*   By: peazeved <peazeved@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:29:24 by peazeved          #+#    #+#             */
-/*   Updated: 2025/06/03 16:51:09 by peazeved         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:46:37 by peazeved         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <stdio.h> // read, prinf , close
-# include <fcntl.h> // open
-# include <stdlib.h> //malloc
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
